@@ -1,5 +1,5 @@
 # 24.11.2014 monday
-* ошибка https://bugs.launchpad.net/fuel/+bug/1394246
+* DONE ошибка https://bugs.launchpad.net/fuel/+bug/1394246
   When vmware vcenter is used, nova-network used one ip range for all vlan networks
 ** Сначала необходимо воспроизвести окружение:
 *** ноды: 1 контроллер A-P-M-F103-S
@@ -9,22 +9,41 @@
 *** настройки vcenter, nova with vlan-manager, 4 fixed range networks
 ** Воспроизведение ошибки
    все fixed сети получат один и тот же диапазон ip адресов
-** Ошибка не воспроизвелась nova создала 4 сети
-   root@node-3:~# nova net-list
-   +--------------------------------------+---------------+-------------+
-   | ID                                   | Label         | CIDR        |
-   +--------------------------------------+---------------+-------------+
-   | 918ce3f1-d226-4836-9a0f-110fa1caa431 | novanetwork_0 | 10.0.0.0/24 |
-   | e83fe332-c66d-474b-8b17-ff1eb3ff686d | novanetwork_1 | 10.0.1.0/24 |
-   | 7d87d3b6-9d7d-4bde-b186-3211f96556ae | novanetwork_2 | 10.0.2.0/24 |
-   | 1bfdaf32-afb9-48f3-835a-1ca7963a4476 | novanetwork_3 | 10.0.3.0/24 |
-   +--------------------------------------+---------------+-------------+
-   со своими диапазонами. первая из них ассоциирована с админским тенантом, остальные --- нет.
-   Циррос не может их получить, бо все интерфейсы кроме eth0 в дауне, но если поднять и назначить ip вручную, то всё работает как и задумывалось.
-   Баг не подтверждён.
+   dnsmasq обслуживает разные интерфейсы
+   ошибка не воспроизведена ни на убунте, ни на центоси
 
 * ошибка https://bugs.launchpad.net/fuel/+bug/1393497
   Deploy NSX and сompute + multiple roles at one node may cause an error Edit
 ** окружение
    2 ноды: контроллер и компьюта-синдер-сеф
-   настройки: 
+   интерфейсы:
+   A
+   P
+   M_{101}
+   .
+   S_{102}
+   настройки:
+   NSX_USERNAME='admin'
+   NSX_PASSWORD= 'admin'
+   NSX_TRANSPORT_ZONE='0f12c1f7-5605-46b6-aa3f-4bf50bde47e5'
+   L3_SERVICE_UUID='aa153851-bd8e-4852-9772-d98a431849e0'
+   NSX_CONTROLLER_ENDPOINT='172.16.1.253'
+   URL_TO_NSX_BITS='http://172.18.170.84'
+   NSX_CONNECTOR_TYPE='stt'
+# 25.11.2014
+* работы по ошибке 1394246 завершены
+  приступил к 1393497. Развёртываю окружение на fuel-5.1.1-20-2014-11-18_11-07-36.iso
+  Образцовое окружение (центось, контроллер и компьюта qemu+nsx) не развернулось по причине:
+  Could not set 'present' on ensure: Connection refused - connect(2) at 25:/etc/puppet/modules/l23network/manifests/l2.pp
+  подобное же окружение на убунте упало по той же причине:
+  Could not set 'present' on ensure: Network is unreachable - connect(2) at 17:/etc/puppet/modules/l23network/manifests/l2.pp
+
+# 26.11.2024
+* ошибка 1393497 передана Стёпе
+* приступил к https://bugs.launchpad.net/fuel/+bug/1396163
+  Fuel 5.1.1 + NSX. Instances do not receive the network configuration
+** Проблема: экземляры не получают ip адреса
+** Окружение: Fuel 5.1.1, qemu+nsx, HA with 5 CentOS nodes: 3 controller, compute and cinder.
+** Воспроизведение: в случае ha не запускается ocf-resource  p_neutron-dhcp-agent и p_neutron-l3-agent.
+   Без dhcp-агента не запускается dnsmask, некому выделить ip для виртуалок, ничего не работает.
+   Обходной путь --- запустить оные ресурсы руками.
