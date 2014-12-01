@@ -47,3 +47,25 @@
 ** Воспроизведение: в случае ha не запускается ocf-resource  p_neutron-dhcp-agent и p_neutron-l3-agent.
    Без dhcp-агента не запускается dnsmask, некому выделить ip для виртуалок, ничего не работает.
    Обходной путь --- запустить оные ресурсы руками.
+# 27.11.2014 thusday
+* Для ошибки 1396163 Андей нашёл обходное решение.
+* Описал обходной путь для https://bugs.launchpad.net/fuel/+bug/1365468
+* Читал про OpenVSwitch
+# 28.11.2014 friday
+* гы-гы. Обновление ядра до 3.13 приводит к тому, что у нас полностью не работает NSX.
+  это вызвано тем, что перешли на использование внутриядерного openvswitch-datapath
+  и в l23network/manifests/l2.pp перестали устанавливать пакеты
+  package { 'openvswitch-datapath':
+     name => 'openvswitch-datapath-lts-saucy-dkms'
+  }
+  и
+  package { 'openvswitch-datapath':
+     name => 'kmod-openvswitch'
+  }
+  что полностью ломает логику манифестов для nsx.
+  для центоси сообщено об ошибке https://bugs.launchpad.net/fuel/+bug/1397290
+  решение --- отменить изменение и продолжить ставить модуль kmod-openvswitch: https://review.openstack.org/137776
+  для убунты --- ошибка: https://bugs.launchpad.net/fuel/+bug/1397331
+  решение --- виртуализовать пакет: https://review.openstack.org/137821
+# 01.12.2014 monday
+* проверка исправления двух предыдущих ошибок на новой iso Сборка #25 (30.11.2014 22:41:00)
