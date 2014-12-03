@@ -37,7 +37,6 @@
   Could not set 'present' on ensure: Connection refused - connect(2) at 25:/etc/puppet/modules/l23network/manifests/l2.pp
   подобное же окружение на убунте упало по той же причине:
   Could not set 'present' on ensure: Network is unreachable - connect(2) at 17:/etc/puppet/modules/l23network/manifests/l2.pp
-
 # 26.11.2024
 * ошибка 1393497 передана Стёпе
 * приступил к https://bugs.launchpad.net/fuel/+bug/1396163
@@ -69,3 +68,13 @@
   решение --- виртуализовать пакет: https://review.openstack.org/137821
 # 01.12.2014 monday
 * проверка исправления двух предыдущих ошибок на новой iso Сборка #25 (30.11.2014 22:41:00)
+* просмотрел Release Notes 6.0 -- VMware issues. Поставил минус. Постаил плюс.
+* начал работы над env-maker
+# 02.12.2014 tuesday
+* проверил работу vlan-manger на свежей iso в muti-node режиме
+* ошибка https://bugs.launchpad.net/fuel/+bug/1386547
+  Решение --- увеличить таймауты в ostf тестах.
+# 03.13.2014 wednesday
+* начал проверку vlan-manager в HA режиме
+* продолжил работу над увеличением таймаутов в ostf
+* продолжил работу над env-maker'ом.
