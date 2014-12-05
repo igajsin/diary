@@ -77,4 +77,35 @@
 # 03.13.2014 wednesday
 * начал проверку vlan-manager в HA режиме
 * продолжил работу над увеличением таймаутов в ostf
+  Завершил. коммит вмёржен.
 * продолжил работу над env-maker'ом.
+#05.12.2014 friday
+* составляю список ситуаций, которые проверяют системные тесты
+  vcenter_one_node_simple
+          Scenario:
+            1. Create cluster
+            2. Add 1 node with controller role
+            3. Deploy the cluster
+            4. Validate cluster was set up correctly, there are no dead
+            5. Create instance and delete instance.
+  vcenter_multiple_cluster
+  Scenario:
+            1. Create cluster
+            2. Add 1 node with controller role
+            3. Deploy the cluster
+            4. Check that available at least two hypervisor
+            5. Create 4 instances
+            6. Check connectivity between 2 instances in different hypervisor
+  vcenter_vmdk
+  Scenario:
+            1. Create cluster
+            2. Add 2 nodes with controller and cinder roles
+            3. Deploy the cluster
+            4. Run osft
+  vcenter_ha
+  Scenario:
+            1. Create cluster
+            2. Add 3 nodes with controller role
+            3. Deploy the cluster
+            4. Run osft
+  
