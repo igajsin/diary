@@ -1,0 +1,6 @@
+* DONE bash массив pipe status
+* bash process substitution
+  более-менее разобрался. нужно опробовать на большем количестве учебных примеров.
+* gnu parallel
+* duckduckgo
+  Как поднять свою ноду?

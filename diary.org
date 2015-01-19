@@ -1,5 +1,4 @@
-# 24.11.2014 monday
-* DONE ошибка https://bugs.launchpad.net/fuel/+bug/1394246
+* <2014-11-24 Пн.> DONE ошибка https://bugs.launchpad.net/fuel/+bug/1394246
   When vmware vcenter is used, nova-network used one ip range for all vlan networks
 ** Сначала необходимо воспроизвести окружение:
 *** ноды: 1 контроллер A-P-M-F103-S
@@ -122,9 +121,22 @@
 # 10.12.2014 wednesday
 * посетил osci митинг
 * приступил к https://bugs.launchpad.net/fuel/+bug/1401046
-#12.01.2015 monday
-* Приступил к работе
-# 13.01.15 tuesday
-* получил задачу добавить поддержку разных cinder-ролей для vCenter и KVM
+* <2015-01-12 Пн.> Приступил к работе
+* <2015-01-13 Вт.>  получил задачу добавить поддержку разных cinder-ролей для vCenter и KVM
 ** необходимо дооформить [[https://blueprints.launchpad.net/fuel/%2Bspec/cinder-vmdk-role][blueprint]]  и [[https://review.openstack.org/#/c/143419/][спецификацию]]
+*** что нужно доделать в спеке
+**** TODO 
 ** реализовать puppet-часть этого. Доделать Стёпин [[https://review.openstack.org/#/c/143954/][патч]]
+*** TODO проверить как он работает сейчас
+*** TODO разделить конфиги для cinder и cinder-vmdk
+*** TODO выкинуть лишнее (данные по vmware из cinder/данные по iscsi из cinder-vmdk)
+    из этих конфигов.
+*** TODO убедиться, что cinder и cinder-vmdk работают по отдельности
+*** TODO убедиться, что cinder и cinder-vmdk работают совместно на одном узле
+** добавить изменения в UI
+*** TODO добавить новую роль
+*** TODO добавить уведомления
+*** TODO обеспечить возможность раздельной настройки для cinder и cinder-vmdk нод
+** написать тесты
+* <2015-01-14 Ср.> продолжаю работать над раздельными cinder нодами
+* <2015-01-14 Ср.> приступил к [[https://bugs.launchpad.net/fuel/%2Bbug/1410163][Cluster attrubute use_vcenter value is always true Edit]]
