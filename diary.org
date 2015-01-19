@@ -140,3 +140,19 @@
 ** написать тесты
 * <2015-01-14 Ср.> продолжаю работать над раздельными cinder нодами
 * <2015-01-14 Ср.> приступил к [[https://bugs.launchpad.net/fuel/%2Bbug/1410163][Cluster attrubute use_vcenter value is always true Edit]]
+* <2015-01-16 Пт.> приступил к исправлению [[https://review.openstack.org/#/c/131140/][set `reserved_host_memory_mb' to zero for vCenter compute driver]]
+  Задача остановлена Даниным по следующим соображениям:
+  I don't think we need it in master, because we are going to implement multi-HV. reserved_host_memory_mb
+  attribute is used by Nova-Scheduler, so this a global setting for the whole environment. In this case KVM
+  nova-computes would be oppressed.
+  Или если очень хочется, то залезь в блупринты скедулера и посмотри - там что-то было на тему, чтобы сама
+  нова-компьюта решала, сколько ресурсов рапортовать, а не скедулер вычислял. Я, кажется, это видел в контексте
+  разных overcommit_ratio. Сейчас ситаация выглядит так: лучше пожертвовать 512 мегов с каждого вСфера-кластера,
+  чем завалить все КВМ-компьюты.
+  Будет круто придумать как применить это только к нова-компьютам для вцента.
+* <2015-01-16 Пт.>  Приступил к [[https://bugs.launchpad.net/fuel/%2Bbug/1405493][{vCenter} OSTF cannot get a compute node IP]]
+  Ошибка заключается в том, что после внесения изменений для отображения один к одному, перестал выполняться тест
+  "Check network connectivity from instance without floating IP".
+  Есть обходной путь: Rename a 'host' parameter in /etc/nova/nova-compute.d/vmware-0.conf to a real node's hostname.
+  Продолжение работы требует лучшего ознакомления с реализацией отображения 1к1.
+
