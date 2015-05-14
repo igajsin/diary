@@ -12,3 +12,8 @@
 * механизм upgrade
 * docker
 * сделать проверку сколько тратится ресурсов на запуск разных языков программирования.
+* dwm заря батареии
+* freenet, gnunet как основа для основанном на файлах блогодвижке
+* mikrotik and ipv6
+* docker and networking
+* docker and persistent storage
