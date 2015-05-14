@@ -4,3 +4,8 @@
 * gnu parallel
 * duckduckgo
   Как поднять свою ноду?
+* dwm заря батареии
+* freenet, gnunet как основа для основанном на файлах блогодвижке
+* mikrotik and ipv6
+* docker and networking
+* docker and persistent storage
