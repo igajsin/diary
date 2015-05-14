@@ -4,3 +4,11 @@
 * gnu parallel
 * duckduckgo
   Как поднять свою ноду?
+* DONE singlehost/multihost Что это такое?
+  имеет отношение к компьюте?
+* DONE разобраться с отоборажением 1 к 1.
+* DONE nova-manage service-list
+  cinder-volume?
+* механизм upgrade
+* docker
+* сделать проверку сколько тратится ресурсов на запуск разных языков программирования.
