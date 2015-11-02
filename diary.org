@@ -168,3 +168,10 @@
   https://mirantis.jira.com/wiki/display/PRD/6.1+-+Mirantis+OpenStack+release+home+page
   https://mirantis.jira.com/secure/VersionBoard.jspa?selectedBoardId=22289&selectedProjectId=18540&type=VB&start=0
 * <2015-05-13 Ср.> Проверяю воспроизводимость ошибки с глансом.
+* Neutron VMware DVS ML2 plugin :dvs:
+  Работа начата <2015-05-25 Пн.>
+** Документация
+   У аналогичного проекта Contrail Plugin есть [[https://mirantis.jira.com/wiki/display/FPL/Documentation][страница документации]]:
+*** [[https://docs.google.com/document/d/1E0JShSBFDq77nLpxktl8TYEd-s3c4hgYUhcG1It1QJY/edit][Solution proposal]]
+** Плагин
+*** процесс инициирован
