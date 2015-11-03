@@ -9,3 +9,4 @@
 * mikrotik and ipv6
 * docker and networking
 * docker and persistent storage
+* канал --- именованный пайп
