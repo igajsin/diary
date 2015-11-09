@@ -1,0 +1,8 @@
+Security groups engine implementation
+https://docs.google.com/document/d/1MIJl-3UckjFswTZnUHrZswWjfEpKUZohu_KIQyqxT4w/edit#
+
+
+https://mirantis.jira.com/wiki/display/PRT/Plugin+development+tracking+process
+
+Sprint
+https://mirantis.jira.com/secure/RapidBoard.jspa?rapidView=627&projectKey=FPL&selectedIssue=FPL-449

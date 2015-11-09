@@ -16,3 +16,9 @@
 
 (define (euler-1 n)
   (sum n))
+
+(define (rdc fn acc n)
+  (if (= 0 n) acc
+      (rdc fn (fn acc n) (- n 1))))
+
+(define (euler-1a n))
