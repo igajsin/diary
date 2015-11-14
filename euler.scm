@@ -64,7 +64,7 @@
    0
    1))
 
-(define (is-prime-factor? n m)
+(define (devides? n m)
   (= 0 (remainder n m)))
 
 (define (start-attempt n)
@@ -79,3 +79,21 @@
   (let ((step (if (even? n) 1 2)))
     (max-prime n (start-attempt n) step)))
 
+(define (find-devisor n d )
+  (cond
+   ((> (* d d) n) n)
+   ((devides? n d) d)
+   (else (find-devisor n (1+ d)))))
+
+(define (smallest-devisor n)
+  (find-devisor n 2))
+
+(define (prime?  n)
+  (= n (smallest-devisor n)))
+
+(define (greatest-devisor n)
+  (let ((d (smallest-devisor n)))
+    (if (= d n) n
+	(greatest-devisor (quotient n d)))))
+
+(define big-number 600851475143)
