@@ -1,5 +1,5 @@
 (define-module (euler util)
-  :export (seq oseq get-order elten))
+  #:export (seq oseq get-order elten))
 
 (define* (seq n #:optional m)
   (if (= n m) '()

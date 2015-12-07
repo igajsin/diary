@@ -1,6 +1,7 @@
 (define-module (euler euler4)
   #:use-module (euler util)
-  #:use-module (srfi srfi-1))
+  #:use-module (srfi srfi-1)
+  #:export (p4p))
 
 (define (ps4p pn)
   "palindrome numbers from palindrome number"
@@ -20,7 +21,10 @@
       (find-devisor1 n (1- k))))
 
 (define (find-devisor n)
-  (find-devisor1 n (quotient n 2)))
+  (find-devisor1 n (min 999 (quotient n 2))))
+
+(define (is-3d-number? n)
+  (and (> n 100) (< n 999)))
 
 (define (firsten n)
   (elten n (get-order n)))
