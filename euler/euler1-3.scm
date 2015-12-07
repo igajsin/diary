@@ -1,6 +1,3 @@
-;; igor.gajsin
-;; wolspenopol
-
 (use-modules (srfi srfi-1))
 
 (define (seq n)

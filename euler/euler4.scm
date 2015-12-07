@@ -2,41 +2,37 @@
   #:use-module (euler util)
   #:use-module (srfi srfi-1))
 
-(define (ps4p pn)
-  "palindrome numbers from palindrome number"
-  (map (lambda (n) (p4p pn n)) (oseq 9 1)))
-
-(define (p4p pn n)
-  (+ n (* 10 pn) (* n (expt 10 (+ (get-order pn) 2)))))
-
-(define palindroms (append-map ps4p  (append-map ps4p (append-map ps4p (oseq 0 9)))))
-(define pp (filter (lambda (x) (< x (* 999 999))) palindroms))
-
 (define (is-devisor? n k)
   (= 0 (remainder n k)))
 
-(define (find-devisor1 n k)
-  (if (is-devisor? n k) k
-      (find-devisor1 n (1- k))))
-
-(define (find-devisor n)
-  (find-devisor1 n (quotient n 2)))
-
-(define (firsten n)
-  (elten n (get-order n)))
-
-(define (lasten n)
-  (elten n 0))
-
-(define (stripen n)
-  (let* ((fo (expt 10 (get-order n))))
-    (quotient (remainder n fo) 10)))
-
-(define (is-palindrome? n)
+(define (find-devisors-in-range x lborder uborder)
   (cond
-   ((= (get-order n) 0) #t)
-   ((and (= (get-order n) 1)
-	 (= (elten n 0) (elten n 1))) #t)
-   ((and (= (firsten n) (lasten n))
-	 (is-palindrome? (stripen n))))
-   (else #f)))
+   ((> lborder uborder) '())
+   ((is-devisor? x uborder) (cons uborder (find-devisors-in-range x lborder (1- uborder))))
+   (#t (find-devisors-in-range x lborder (1- uborder)))))
+
+(define (is-n3? n)
+  (let* ((devisors (find-devisors-in-range n 100 999))
+	 (subdevisors (map (lambda (x) (/ n x)) devisors)))
+    (not (null?
+	  (filter (lambda (x) (memq x devisors)) subdevisors)))))
+
+(define (is-valide-palindrome? n)
+  (and (is-palindrome? n)
+       (> n 10000) (< n 998001)
+       (is-n3? n)))
+
+(define (palist lborder uborder)
+  (cond
+   ((> lborder uborder) '())
+   ((is-valide-palindrome? uborder) (cons uborder (palist lborder (1- uborder))))
+   (#t (palist lborder (1- uborder)))))
+
+(define (is-palindrome? num)
+  (let ((ord (get-order num)))
+    (fold (lambda (v acc) (and v acc))
+	  #t
+	  (map
+	   (lambda (x) (= (elten num x)
+			  (elten num (- ord x))))
+	   (oseq 0 (quotient ord 2))))))
