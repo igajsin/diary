@@ -1,5 +1,5 @@
 (define-module (euler util)
-  :export (seq oseq get-order elten is-devisor? is-prime?))
+  #:export (seq oseq get-order elten is-devisor? is-prime?))
 
 (define (is-devisor? n k)
   (= 0 (remainder n k)))
