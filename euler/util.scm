@@ -1,5 +1,8 @@
 (define-module (euler util)
-  #:export (seq oseq get-order elten))
+  #:export (seq oseq get-order elten is-devisor?))
+
+(define (is-devisor? n k)
+  (= 0 (remainder n k)))
 
 (define* (seq n #:optional m)
   (if (= n m) '()

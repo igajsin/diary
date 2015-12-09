@@ -13,9 +13,6 @@
 (define palindroms (append-map ps4p  (append-map ps4p (append-map ps4p (oseq 0 9)))))
 (define pp (filter (lambda (x) (< x (* 999 999))) palindroms))
 
-(define (is-devisor? n k)
-  (= 0 (remainder n k)))
-
 (define (find-devisor1 n k)
   (if (is-devisor? n k) k
       (find-devisor1 n (1- k))))
