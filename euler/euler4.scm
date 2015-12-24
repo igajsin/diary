@@ -2,9 +2,6 @@
   #:use-module (euler util)
   #:use-module (srfi srfi-1))
 
-(define (is-devisor? n k)
-  (= 0 (remainder n k)))
-
 (define (find-devisors-in-range x lborder uborder)
   (cond
    ((> lborder uborder) '())

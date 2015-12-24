@@ -1,9 +1,8 @@
 (define-module (euler util)
-  :export (seq oseq get-order elten))
+  :export (seq oseq get-order elten is-devisor?))
 
-(define* (seq n #:optional m)
-  (if (= n m) '()
-      (cons n (seq (- n 1) m))))
+(define (is-devisor? n k)
+  (= 0 (remainder n k)))
 
 (define (oseq start end)
   (letrec
@@ -24,4 +23,3 @@
 (define (elten n m)
   (if (> m (get-order n)) (raise "too big m")
       (quotient (remainder n (expt 10 (1+ m))) (expt 10 m))))
-
