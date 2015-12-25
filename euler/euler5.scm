@@ -15,5 +15,3 @@
 (define (findd k step)
   (if (check k 20) k
       (findd (+ k step) step)))
-
-
