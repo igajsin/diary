@@ -9,3 +9,12 @@
 
 (define (square-of-sums lborder uborder)
   (expt (fold + 0 (oseq lborder uborder)) 2))
+
+(define (is-prime1 num k uborder)
+  (cond
+   ((> k uborder) #t)
+   ((is-devisor? num k) #f)
+   (#t (is-prime1 num (1+ k) uborder))))
+
+(define (is-prime? num)
+  (is-prime1 num 2 (sqrt num)))

@@ -1,5 +1,5 @@
 (define-module (euler util)
-  :export (seq oseq get-order elten is-devisor?))
+  :export (seq oseq get-order elten is-devisor? is-prime?))
 
 (define (is-devisor? n k)
   (= 0 (remainder n k)))
@@ -23,3 +23,12 @@
 (define (elten n m)
   (if (> m (get-order n)) (raise "too big m")
       (quotient (remainder n (expt 10 (1+ m))) (expt 10 m))))
+
+(define (is-prime1 num k uborder)
+  (cond
+   ((> k uborder) #t)
+   ((is-devisor? num k) #f)
+   (#t (is-prime1 num (1+ k) uborder))))
+
+(define (is-prime? num)
+  (is-prime1 num 2 (sqrt num)))
