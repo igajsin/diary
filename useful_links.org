@@ -9,3 +9,4 @@ https://mirantis.jira.com/secure/RapidBoard.jspa?rapidView=627&projectKey=FPL&se
 
 git rebase
 http://habrahabr.ru/post/161009/
+music https://www.youtube.com/watch?v=66nW_xws1uk&list=PLZ0Yi3AvNPeEfGD6n0SZDCrvwybbEIcG_&index=2
