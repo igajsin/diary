@@ -1,0 +1,10 @@
+Улучшение плагина
+* TODO на compute-vmware должны отрабатывать те же network-роли, что и на compute
+  2015-12-30 23:13:58 +0000 Scope(Class[main]) (notice): MODULAR: openstack-network/common-config.pp
+  2015-12-30 23:14:22 +0000 Scope(Class[main]) (notice): MODULAR: openstack-network/plugins/ml2.pp
+  2015-12-30 23:14:31 +0000 Scope(Class[main]) (notice): MODULAR: openstack-network/agents/l3.pp
+  2015-12-30 23:14:35 +0000 Scope(Class[main]) (notice): MODULAR: openstack-network/agents/metadata.pp
+  2015-12-30 23:14:40 +0000 Scope(Class[main]) (notice): MODULAR: openstack-network/compute-nova.pp
+* TODO перенести запуск агента под crm
+* TODO агент должен выбирать на какой ноде ему запускатсья
+
